@@ -1,6 +1,8 @@
 package com.example.myapp1
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 
     val angkaBulatnull: Int? = null;
-    val angkaBulat: Int = 10;
+    var angkaBulat: Int = 10;
     val angkaDesimal: Double = 14.3;
     val angkaPanjang: Long = 1401231312;
 
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     val booleanArray: Array<Boolean> = arrayOf(true , false) ;
 
     fun hitung(){
-
+        angkaBulat++
     }
 
     fun hitung(angka: Int?, kata: String){
@@ -41,11 +43,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        if(angkaBulat == 4 && angkaDesimal > 13){
-            benar = true
-            kata = "perubahan text"
-        }else{
-            benar = false
-        }
+        val textView: TextView = findViewById(R.id.text_view)
+        val btnHitung: Button = findViewById(R.id.btn_hitung)
+
+        btnHitung.setOnClickListener({
+            hitung()
+            textView.text= angkaBulat.toString()
+        })
     }
 }
